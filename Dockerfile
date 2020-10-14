@@ -9,8 +9,7 @@ RUN wget -q https://repo.open.catalyst.harvard.edu/nexus/content/groups/public/n
 # default keystore location
 RUN mkdir -p /opt/shrine
 
-COPY context.xml.j2 /opt/templates/
-COPY shrine.conf.j2 /opt/templates/
+COPY templates/ /opt/templates/
 
 COPY template.py /usr/bin/
 RUN chmod +x /usr/bin/template.py
