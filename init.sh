@@ -33,6 +33,12 @@ if [ ! -f /opt/shrine/shrine.keystore ]; then
           -keystore /opt/shrine/shrine.keystore -storetype pkcs12 -validity 7300
 fi
 
+if grep -E "^http|^ftp" <<< "$SHRINE_JDBC_PATH" ; then
+  wget "$SHRINE_JDBC_PATH" -O /usr/local/tomcat/lib/jdbc.jar
+else
+  mv "$SHRINE_JDBC_PATH" /usr/local/tomcat/lib/
+fi
+
 template.py
 
 exec /usr/local/tomcat/bin/catalina.sh run
