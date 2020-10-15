@@ -2,6 +2,7 @@
 
 set -euxo pipefail
 
+: "$SHRINE_DB_TYPE"
 : "$SHRINE_KEYSTORE_PASSWORD"
 : "$SHRINE_JDBC_PATH"
 : "$SHRINE_PROBLEMDB_USER"
