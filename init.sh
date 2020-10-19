@@ -3,6 +3,7 @@
 set -euxo pipefail
 
 : "$SHRINE_DB_TYPE"
+: "$SHRINE_KEYSTORE_PATH"
 : "$SHRINE_KEYSTORE_PASSWORD"
 : "$SHRINE_JDBC_PATH"
 : "$SHRINE_PROBLEMDB_USER"
@@ -26,11 +27,10 @@ set -euxo pipefail
 : "$SHRINE_STEWARDDB_DRIVER"
 : "$SHRINE_STEWARDDB_URL"
 
-if [ ! -f /opt/shrine/shrine.keystore ]; then
-  keytool -genkeypair -keysize 2048 -alias shrine-example.harvard.edu \
-          -dname "CN=shrine-example.harvard.edu, OU=SHRINE Example, O=SHRINE Network, L=Boston, S=MA, C=US" \
-          -keyalg RSA -keypass "$SHRINE_KEYSTORE_PASSWORD" -storepass "$SHRINE_KEYSTORE_PASSWORD" \
-          -keystore /opt/shrine/shrine.keystore -storetype pkcs12 -validity 7300
+if grep -E "^http|^ftp" <<< "$SHRINE_KEYSTORE_PATH" ; then
+  wget "$SHRINE_KEYSTORE_PATH" -O /opt/shrine/shrine.keystore
+else
+  mv "$SHRINE_KEYSTORE_PATH" /opt/shrine/shrine.keystore
 fi
 
 if grep -E "^http|^ftp" <<< "$SHRINE_JDBC_PATH" ; then
