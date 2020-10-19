@@ -11,7 +11,7 @@ RUN mkdir -p /opt/shrine
 
 COPY templates/ /opt/templates/
 
-COPY template.py /usr/bin/
-RUN chmod +x /usr/bin/template.py
+COPY configure_templates.py /usr/bin/
+RUN chmod +x /usr/bin/configure_templates.py
 COPY init.sh .
 ENTRYPOINT [ "/bin/bash", "init.sh" ]

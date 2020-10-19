@@ -39,6 +39,5 @@ else
   mv "$SHRINE_JDBC_PATH" /usr/local/tomcat/lib/
 fi
 
-template.py
-
+configure_templates.py
 exec /usr/local/tomcat/bin/catalina.sh run
