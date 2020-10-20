@@ -29,6 +29,8 @@ set -euxo pipefail
 
 if grep -E "^http|^ftp" <<< "$SHRINE_KEYSTORE_PATH" ; then
   wget "$SHRINE_KEYSTORE_PATH" -O /opt/shrine/shrine.keystore
+elif [ "$SHRINE_KEYSTORE_PATH" == "/opt/shrine/shrine.keystore" ] ; then
+  true
 else
   mv "$SHRINE_KEYSTORE_PATH" /opt/shrine/shrine.keystore
 fi
