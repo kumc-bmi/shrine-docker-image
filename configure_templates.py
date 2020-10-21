@@ -9,6 +9,7 @@ env = Environment(loader=file_loader)
 
 template = env.get_template('shrine.conf.j2')
 output = template.render(shrineDatabaseType=os.environ['SHRINE_DB_TYPE'],
+                         hive_password=os.environ['SHRINE_HIVE_PASSWORD'],
                          keystore_password=os.environ['SHRINE_KEYSTORE_PASSWORD']) # noqa
 f = open("/usr/local/tomcat/lib/shrine.conf", "w")
 f.write(output)
