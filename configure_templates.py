@@ -8,14 +8,15 @@ file_loader = FileSystemLoader('/opt/templates')
 env = Environment(loader=file_loader)
 
 template = env.get_template('shrine.conf.j2')
-output = template.render(keystore_password=os.environ['SHRINE_KEYSTORE_PASSWORD']) # noqa
+output = template.render(shrineDatabaseType=os.environ['SHRINE_DB_TYPE'],
+                         keystore_password=os.environ['SHRINE_KEYSTORE_PASSWORD']) # noqa
 f = open("/usr/local/tomcat/lib/shrine.conf", "w")
 f.write(output)
 f.close()
 
 template = env.get_template('context.xml.j2')
 # there must be a better way to do this
-output = template.render(shrineDatabaseType=os.environ['SHRINE_DB_TYPE'], # noqa
+output = template.render(shrineDatabaseType=os.environ['SHRINE_DB_TYPE'],
                          problemDB_user=os.environ['SHRINE_PROBLEMDB_USER'], # noqa
                          problemDB_pass=os.environ['SHRINE_PROBLEMDB_PASS'], # noqa
                          problemDB_driver=os.environ['SHRINE_PROBLEMDB_DRIVER'], # noqa
