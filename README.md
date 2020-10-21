@@ -10,6 +10,13 @@ See the top of `init.sh` for required environment variables.  Use the container 
 
 Depending on your choice of database, you will need an appropriate jdbc driver.  If `SHRINE_JDBC_PATH` is a url, it will be downloaded.  Otherwise, `SHRINE_JDBC_PATH` needs to be a filesystem path populated by a method of your choosing.
 
+`shrine.conf.j2` is expected to exist at `/opt/templates/shrine.conf.j2`.  This can be mapped in as follows:
+
+```
+    volumes:
+     - shrine-hub.conf.j2:/opt/templates/shrine.conf.j2
+```
+
 ## License and Acknowledgments
 
 The SHRINE software is [distributed under](https://open.catalyst.harvard.edu/wiki/display/SHRINE/Software+Downloads) the [three-clause BSD license](https://opensource.org/licenses/BSD-3-Clause).
