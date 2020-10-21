@@ -14,7 +14,7 @@ Depending on your choice of database, you will need an appropriate jdbc driver. 
 
 ```
     volumes:
-     - shrine-hub.conf.j2:/opt/templates/shrine.conf.j2
+     - ./shrine-hub.conf.j2:/opt/templates/shrine.conf.j2
 ```
 
 ## License and Acknowledgments
