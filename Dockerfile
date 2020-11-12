@@ -1,6 +1,6 @@
 FROM tomcat:8.5-jdk11
 
-RUN apt update && apt install -y python3-pip
+RUN apt update && apt install -y python3-pip tzdata
 RUN pip3 install jinja2
 
 RUN wget -q https://repo.open.catalyst.harvard.edu/nexus/content/groups/public/net/shrine/shrine-api-war/3.0.0/shrine-api-war-3.0.0.war \
