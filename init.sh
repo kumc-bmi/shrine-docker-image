@@ -2,6 +2,7 @@
 
 set -euxo pipefail
 
+: "$TZ"
 : "$SHRINE_DB_TYPE"
 : "$SHRINE_HIVE_PASSWORD"
 : "$SHRINE_KEYSTORE_PATH"
