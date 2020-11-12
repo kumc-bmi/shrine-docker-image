@@ -9,6 +9,15 @@ RUN wget -q https://repo.open.catalyst.harvard.edu/nexus/content/groups/public/n
 # default keystore location
 RUN mkdir -p /opt/shrine
 
+# load lucene indices into default location
+RUN mkdir -p /usr/local/shrine/conf &&\
+    cd /usr/local/shrine/conf &&\
+    wget https://shrine-act-artifacts.s3.amazonaws.com/lucene-indices/lucene_index-2.0.1-cov3-07-14-2020.zip -O lucene_index.zip &&\
+    wget https://shrine-act-artifacts.s3.amazonaws.com/lucene-indices/suggest_index-2.0.1-cov3-07-14-2020.zip -O suggest_index.zip &&\
+    unzip lucene_index.zip &&\
+    unzip suggest_index.zip &&\
+    rm lucene_index.zip suggest_index.zip
+
 COPY templates/ /opt/templates/
 
 COPY configure_templates.py /usr/bin/
