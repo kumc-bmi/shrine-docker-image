@@ -1,9 +1,10 @@
-FROM tomcat:8.5-jdk11
+FROM tomcat:9.0.69-jdk17-corretto-al2
 
-RUN apt update && apt install -y python3-pip tzdata
+RUN apt update && apt install -y python3-pip tzdata,postfix,ntp
+RUN systemctl start ntpd && systemctl enable ntpd
 RUN pip3 install jinja2
 
-RUN wget -q https://repo.open.catalyst.harvard.edu/nexus/content/groups/public/net/shrine/shrine-api-war/3.0.0/shrine-api-war-3.0.0.war \
+RUN wget -q https://repo.open.catalyst.harvard.edu/nexus/content/groups/public/net/shrine/shrine-api-war/4.0.0/shrine-api-war-4.0.0.war \
          -O /usr/local/tomcat/webapps/shrine-api.war
 
 # default keystore location
