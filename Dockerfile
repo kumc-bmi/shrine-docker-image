@@ -4,7 +4,7 @@ RUN apt update && apt install -y python3-pip tzdata,postfix,ntp
 RUN systemctl start ntpd && systemctl enable ntpd
 RUN pip3 install jinja2
 
-RUN wget -q https://repo.open.catalyst.harvard.edu/nexus/content/groups/public/net/shrine/shrine-api-war/4.0.0/shrine-api-war-4.0.0.war \
+RUN wget -q https://repo.open.catalyst.harvard.edu/nexus/content/groups/public/net/shrine/shrine-api-war/3.1.0/shrine-api-war-3.1.0.war \
          -O /usr/local/tomcat/webapps/shrine-api.war
 
 # default keystore location
@@ -20,6 +20,9 @@ RUN mkdir -p /usr/local/shrine/conf &&\
     rm lucene_index.zip suggest_index.zip
 
 COPY templates/ /opt/templates/
+
+# Setting up of the service Shrine to allow service cmds:
+COPY templates/shrine_service_setup /etc/init.d/shrine
 
 COPY configure_templates.py /usr/bin/
 RUN chmod +x /usr/bin/configure_templates.py
