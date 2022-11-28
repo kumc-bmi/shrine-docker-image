@@ -43,8 +43,10 @@ else
   mv "$SHRINE_JDBC_PATH" /usr/local/tomcat/lib/
 fi
 
-# Setting up the flags for tomcat
-export CATALINA_OPTS="$CATALINA_OPTS -server -Xms1024m -Xmx3072m -Duser.timezone=America/New_York"
+# Setting up the flags and env variables for tomcat
+echo 'export CATALINA_OPTS="$CATALINA_OPTS -server -Xms1024m -Xmx3072m -Duser.timezone=America/New_York"' >> /usr/local/tomcat/bin/setenv.sh
+echo 'export JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto' >> /usr/local/tomcat/bin/setenv.sh
+echo 'export JRE_HOME=$JAVA_HOME' >> /usr/local/tomcat/bin/setenv.sh
 
 configure_templates.py
 exec /usr/local/tomcat/bin/catalina.sh run
