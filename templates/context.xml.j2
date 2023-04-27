@@ -7,29 +7,29 @@
               maxTotal="128" maxIdle="32" maxWaitMillis="10000"
               username="{{problemDB_user}}" password="{{problemDB_pass}}" driverClassName="{{problemDB_driver}}"
               url="{{problemDB_url}}"
-              testOnBorrow="true" validationQuery="{% if shrineDatabaseType == "oracle" %}select 1 from dual{% else %}select 1{% endif %}" />
+              testOnBorrow="true" validationQuery="{% if shrineDatabaseType == "mysql" %}select 1 from dual{% else %}select 1{% endif %}" />
  
     <Resource name="jdbc/shrineDB" auth="Container" type="javax.sql.DataSource"
               maxTotal="128" maxIdle="32" maxWaitMillis="10000"
               username="{{shrineDB_user}}" password="{{shrineDB_pass}}" driverClassName="{{shrineDB_driver}}"
               url="{{shrineDB_url}}"
-              testOnBorrow="true" validationQuery="{% if shrineDatabaseType == "oracle" %}select 1 from dual{% else %}select 1{% endif %}" />
+              testOnBorrow="true" validationQuery="{% if shrineDatabaseType == "mysql" %}select 1 from dual{% else %}select 1{% endif %}" />
  
     <Resource name="jdbc/adapterAuditDB" auth="Container" type="javax.sql.DataSource"
               maxTotal="128" maxIdle="32" maxWaitMillis="10000"
               username="{{adapterAuditDB_user}}" password="{{adapterAuditDB_pass}}" driverClassName="{{adapterAuditDB_driver}}"
               url="{{adapterAuditDB_url}}"
-              testOnBorrow="true" validationQuery="{% if shrineDatabaseType == "oracle" %}select 1 from dual{% else %}select 1{% endif %}" />
+              testOnBorrow="true" validationQuery="{% if shrineDatabaseType == "mysql" %}select 1 from dual{% else %}select 1{% endif %}" />
  
     <Resource name="jdbc/qepAuditDB" auth="Container" type="javax.sql.DataSource"
               maxTotal="512" maxIdle="32" maxWaitMillis="10000"
               username="{{qepAuditDB_user}}" password="{{qepAuditDB_pass}}" driverClassName="{{qepAuditDB_driver}}"
               url="{{qepAuditDB_url}}"
-              testOnBorrow="true" validationQuery="{% if shrineDatabaseType == "oracle" %}select 1 from dual{% else %}select 1{% endif %}" />
+              testOnBorrow="true" validationQuery="{% if shrineDatabaseType == "mysql" %}select 1 from dual{% else %}select 1{% endif %}" />
  
     <Resource name="jdbc/stewardDB" auth="Container" type="javax.sql.DataSource"
               maxTotal="128" maxIdle="32" maxWaitMillis="10000"
               username="{{stewardDB_user}}" password="{{stewardDB_pass}}" driverClassName="{{stewardDB_driver}}"
               url="{{stewardDB_url}}"
-              testOnBorrow="true" validationQuery="{% if shrineDatabaseType == "oracle" %}select 1 from dual{% else %}select 1{% endif %}" />
+              testOnBorrow="true" validationQuery="{% if shrineDatabaseType == "mysql" %}select 1 from dual{% else %}select 1{% endif %}" />
 </Context>
