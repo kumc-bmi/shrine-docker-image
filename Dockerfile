@@ -1,7 +1,7 @@
 FROM tomcat:9.0.69-jdk17-corretto-al2
 
 RUN yum update
-RUN yum install -y python3-pip,tzdata,postfix,ntp,unzip
+RUN yum install --assumeyesq python3-pip,tzdata,postfix,ntp,unzip
 RUN systemctl start ntpd && systemctl enable ntpd
 RUN pip3 install jinja2
 
