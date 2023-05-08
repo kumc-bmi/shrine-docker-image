@@ -1,5 +1,7 @@
 #!/bin/bash
 
+systemctl start ntpd && systemctl enable ntpd
+
 set -euxo pipefail
 
 : "$TZ"
