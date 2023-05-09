@@ -31,6 +31,8 @@ set -euxo pipefail
 : "$SHRINE_STEWARDDB_DRIVER"
 : "$SHRINE_STEWARDDB_URL"
 
+keytool -genkeypair -keysize 2048 -alias enact.kumc.edu -dname "CN=enact.harvard.edu, OU=Research Administration and Research Informatics, O=Universityof Kansas Medical Center, L=Kansas City, S=KS, C=US" -keyalg RSA -keypass $SHRINE_KEYSTORE_PASSWORD -storepass $SHRINE_KEYSTORE_PASSWORD -keystore shrine.keystore -storetype pkcs12 -validity 7300
+
 if grep -E "^http|^ftp" <<< "$SHRINE_KEYSTORE_PATH" ; then
   wget "$SHRINE_KEYSTORE_PATH" -O /opt/shrine/shrine.keystore
 elif [ "$SHRINE_KEYSTORE_PATH" == "/opt/shrine/shrine.keystore" ] ; then
