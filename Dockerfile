@@ -22,7 +22,6 @@ RUN mkdir -p /usr/local/shrine/conf &&\
 
 COPY templates/ /opt/templates/
 
-COPY templates/shrine.keystore /opt/shrine/shrine.keystore
 # Setting up of the service Shrine to allow service cmds:
 COPY templates/shrine_service_setup /etc/init.d/shrine
 
