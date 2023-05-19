@@ -1,6 +1,6 @@
 .PHONY: build lint
 
-TAG:="$branch"
+TAG:=$branch
 
 build:
 	docker build --tag shrine:$(TAG) .
