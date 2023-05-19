@@ -1,6 +1,6 @@
 .PHONY: build lint
 
-TAG:=$(shell git rev-parse HEAD | colrm 8)
+TAG:="$branch"
 
 build:
 	docker build --tag shrine:$(TAG) .
